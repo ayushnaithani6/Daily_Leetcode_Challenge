@@ -1,0 +1,16 @@
+26/March/2021
+
+problems to be done: 
+
+Longest common prefix (easy)
+Longest palindromic substring (medium)
+String-to-Integer (medium)
+Generate Parenthesis (medium)
+Minimum window substring (hard)
+
+
+https://leetcode.com/problems/longest-common-prefix/
+https://leetcode.com/problems/longest-palindromic-substring/
+https://leetcode.com/problems/string-to-integer-atoi/
+https://leetcode.com/problems/generate-parentheses/
+https://leetcode.com/problems/minimum-window-substring/
