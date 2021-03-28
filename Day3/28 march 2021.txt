@@ -7,3 +7,10 @@ shuffle array
 
 
 
+Edit : Pick only high rated question
+
+(revise)
+GAP algorithm ---> merge sorted array in O(1) space 
+rotated array :---> reversal algo
+
+
