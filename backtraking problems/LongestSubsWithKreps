@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int longestSubstringUtil(string &s, int start, int end, int k) {
+    if(k > end-start) {
+        return 0;
+    }
+
+    vector<int> charCount(26);
+    for(int i=start; i<end; ++i) {
+        ++charCount[s[i]-'a'];
+    }
+
+    for(int i=start; i<end; ++i) {
+        if(charCount[s[i]-'a'] < k) {
+            int j = i+1;
+            while(j < end && charCount[s[j]-'a'] < k) {
+                ++j;
+            }
+            // recursive function for finding longestSubstring of splitted string
+            return max(longestSubstringUtil(s, start, i, k), longestSubstringUtil(s, j, end, k));
+        }
+
+        // a b a b b c d e a a b b
+        //           j j j  <--- splitting
+        // a b a b b   d e a a b b   <-- we can reduce this step
+        // 5           e a a b b     <-- and this step by automatically incrementing j pointer in first call
+        //              a a b b
+    }
+    return end-start;
+}
+
+
+
+int longestSubstring(string s, int k) {
+    return longestSubstringUtil(s, 0, s.size(), k);
+}
+
+
+
+int main() {
+    cout << longestSubstring("ababbcdeaab", 2);
+    return 0;
+}
