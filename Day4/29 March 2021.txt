@@ -5,11 +5,4 @@ Subarray Sort (leetcode version + algoExpert Version)
 Zigzag Traverse (algoExpert)
 
 
-"happy holi" 
-
-
-
-
-I will continue this on 3 April >>
-
-I have to prepare for exam :( ... 
+Checkout master branch
