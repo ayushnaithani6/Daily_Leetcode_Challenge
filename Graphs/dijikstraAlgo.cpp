@@ -27,7 +27,6 @@ void printShortestDistances(vector<int>&, int);
 void printShortestPaths(vector<int>&, int);
 void printShortestPathsUtil(vector<int>&, int);
 
-
 int main() {
     Graph *g = createGraph();
     int v = g->v;
