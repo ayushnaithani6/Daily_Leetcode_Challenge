@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPalindrome(string &s, int st, int en) {
+    while(st < en) {
+        if(s[st] != s[en]) {
+            return false;
+        }
+        ++st;
+        --en;
+    }
+    return true;
+}
+
+void palindromicPartition(string &s, int k, vector<string> &curPartition, vector<vector<string>> &allValidPartition) {
+    if(k == s.length()) {
+        allValidPartition.push_back(curPartition);
+        return;
+    }
+
+    for(int i=k; i<s.length(); ++i) {
+        if(isPalindrome(s, k, i)) {
+            string suffix = s.substr(k, i-k+1);
+            curPartition.push_back(suffix);
+            palindromicPartition(s, i+1, curPartition, allValidPartition);
+            curPartition.pop_back();
+        }
+    }
+}
+
+int main() {
+    string s = "aab";
+    vector<vector<string>> allValidPartition;
+    vector<string> curPartition;
+    int k = 0;
+    palindromicPartition(s, k, curPartition, allValidPartition);
+    for(vector<string> v: allValidPartition) {
+        for(int i=0; i<v.size(); ++i) {
+            cout << v[i] << " ";
+        }
+        cout << endl;
+    }
+}
