@@ -1,0 +1,60 @@
+// KMP pattern searching algorithm
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> computeLPS(string pattern) {
+    int n = pattern.length();
+    vector<int> LPS(n, 0);
+    int i = 0, j = 1;
+    while(j < n) {
+        if(pattern[i] == pattern[j]) {
+            ++i;
+            LPS[j] = i;
+            ++j;
+        }
+        else {
+            if(i == 0) {
+                LPS[j] = 0;
+                ++j;
+            }
+            else {
+                i = LPS[i-1];
+            }
+        }
+    }
+    return LPS;  
+}
+
+void findPattern(string text, string pattern, vector<int> &LPS) {
+    int n = text.length(), m = pattern.length();
+    if(n < m) {
+        return;
+    }
+    int i = 0, j = 0;
+    while(j < m && i < n) {
+        if(text[i] == pattern[j]) {
+            ++i;
+            ++j;
+            if(j == m) {
+                cout << i-m << " ";
+                j = 0;
+            }
+        }
+        else {
+            if(j == 0)
+                ++i;
+            else 
+                j = LPS[j-1];
+        }
+    }
+}
+
+
+int main() {
+    string text, pattern;
+    cin >> text >> pattern;
+    vector<int> LPS = computeLPS(pattern);
+    // for(int i=0; i<pattern.length(); ++i) cout << LPS[i] << " ";
+    findPattern(text, pattern, LPS);
+    return 0;
+}
